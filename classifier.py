@@ -44,3 +44,13 @@ classifier.compile(optimizer = 'adam', loss='binary_crossentropy', metrics=['acc
 
 #Fit the ANN on training data
 classifier.fit(x_train, y_train, batch_size = 10, nb_epoch = 50)
+
+#Running the model on the test data.
+y_pred = classifier.predict(x_test)
+y_pred = (y_pred > 0.5)
+
+#Calculating accuracy
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test,y_pred)
+acc = (cm[0,0]+cm[1,1])/140
+print("accuracy = %0.2f" %(acc*100) + '%')
