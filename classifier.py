@@ -11,8 +11,7 @@ Y = dataset.iloc[:, 10].values
 y = Y == 4
 
 # Replace missing values with mean of the column
-# The original Imputer will soon be deprecated
-from sklearn import SimpleImputer as Imputer
+from sklearn.preprocessing import Imputer
 
 imputer = Imputer(missing_values="NaN", strategy="mean", axis=0)
 imputer = imputer.fit(x[:, 1:10])
